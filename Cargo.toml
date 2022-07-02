@@ -1,15 +1,15 @@
 [package]
-name = "eframe_template"
-default-run = "eframe_template_bin"
+name = "random_entertainment_ui"
+default-run = "random_entertainment_ui_bin"
 version = "0.1.0"
-authors = ["Emil Ernerfeldt <emil.ernerfeldt@gmail.com>"]
+authors = ["Leo"]
 edition = "2021"
 rust-version = "1.60"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [[bin]]
-name = "eframe_template_bin"
+name = "random_entertainment_ui_bin"
 path = "src/main.rs"
 
 [lib]
@@ -19,7 +19,17 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 egui = "0.18.0"
 eframe = { version = "0.18.0", features = ["persistence"] }
-serde = { version = "1", features = ["derive"] } # You only need this if you want app persistence
+serde = { version = "1", features = [
+    "derive",
+] } # You only need this if you want app persistence
+reqwest-wasm = { version = "0.11.0", features = ["json", "blocking"] }
+error-chain = "0.12.4"
+tokio = { version = "1.19.2", features = ["rt-multi-thread", "macros"] }
+dotenv = "0.15.0"
+rand = "0.8.5"
+image = "0.24.2"
+egui_extras = {version = "0.18.0", features = ["image"]}
+futures = "0.3.21"
 
 # native:
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
